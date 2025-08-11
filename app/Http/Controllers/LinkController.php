@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreLinkRequest;
 use App\Http\Requests\UpdateLinkRequest;
 use App\Models\Link;
-
+use Illuminate\Support\Facades\Auth;
 
 class LinkController extends Controller
 {
@@ -70,5 +70,26 @@ class LinkController extends Controller
     {
         $link->delete();
         return to_route('dashboard')->with(['message' => 'Link deletado com sucesso!']);
+    }
+
+    /**
+     * updates the link index
+     */
+    public function up(Link $link)
+    {
+        $link->moveUp();
+
+
+        return back();
+    }
+
+    /**
+     * updates the link index
+     */
+    public function down(Link $link)
+    {
+        $link->moveDown();
+
+        return back();
     }
 }

@@ -35,5 +35,8 @@ Route::middleware('auth')->group(
         Route::get('/links/{link}/edit', [LinkController::class, 'edit'])->name('links.edit');
         Route::put('/links/{link}/edit', [LinkController::class, 'update']);
         Route::delete('/links/{link}', [LinkController::class, 'destroy'])->name('links.delete');
+
+        Route::patch('/links/{link}/up', [LinkController::class, 'up'])->name('links.up');
+        Route::patch('/links/{link}/down', [LinkController::class, 'down'])->name('links.down');
     }
 );

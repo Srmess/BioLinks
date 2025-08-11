@@ -9,7 +9,25 @@
 
     <ul>
         @foreach ($links as $link)
-            <li>
+            <li style="display: flex">
+                @unless ($loop->first)
+                    <form action="{{ route('links.up', $link) }}" method="POST">
+                        @csrf
+                        @method('PATCH')
+                        <button>⬆️​ ​</button>
+                    </form>
+                @endunless
+
+                @unless ($loop->last)
+                    <form action="{{ route('links.down', $link) }}" method="POST">
+                        @csrf
+                        @method('PATCH')
+                        <button>⬇️</button>
+
+                    </form>
+                @endunless
+
+
                 <a href="{{ route('links.edit', $link) }}">
                     {{ $link->name }}
                 </a>
@@ -18,7 +36,7 @@
                     onsubmit=" return confirm('Tem certeza que deseja excluir esse link?')">
                     @csrf
                     @method('DELETE')
-                    <button>Deletar</button>
+                    <button>Deletar ​​</button>
                 </form>
             </li>
         @endforeach
