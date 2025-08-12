@@ -1,44 +1,17 @@
-<div>
-    <h1>Cadastro</h1>
-
-    @if ($message = session()->get('message'))
-        <div>
-            {{ $message }}
-        </div>
-    @endif
-
-    <form action="{{ route('register') }}" method="post">
-        @csrf
-
-        <div>
-            <label>Nome:</label>
-            <input type="text" name="name" value="{{ old('name') }}" />
-            @error('name')
-                <span>{{ $message }}</span>
-            @enderror
-        </div>
-        <div>
-            <label>Email:</label>
-            <input type="text" name="email" value="{{ old('email') }}" />
-            @error('email')
-                <span>{{ $message }}</span>
-            @enderror
-        </div>
-        <div>
-            <label>Confirmação do email:</label>
-            <input type="text" name="email_confirmation" value="{{ old('email_confirmation') }}" />
-            @error('email_confirmation')
-                <span>{{ $message }}</span>
-            @enderror
-        </div>
-        <div>
-            <label>Senha:</label>
-            <input type="text" name="password" value="{{ old('password') }}" />
-            @error('password')
-                <span>{{ $message }}</span>
-            @enderror
-        </div>
-
-        <button>Enviar</button>
-    </form>
-</div>
+<x-layout.app>
+    <x-container>
+        <x-card title="Register">
+            <x-form :route="route('register')" post id='register-form'>
+                <x-input placeholder="Name" name="name" value="{{ old('name') }}" />
+                <x-input placeholder="Email" name="email" value="{{ old('email') }}" />
+                <x-input placeholder="Email confirmation" name="email_confirmation"
+                    value="{{ old('email_confirmation') }}" />
+                <x-input placeholder="Password" name="password" value="{{ old('password') }}" />
+            </x-form>
+            <x-slot:actions class="flex-col">
+                <x-button form="register-form" type='submit' class="w-full">Register</x-button>
+                <x-a :href="route('login')">Already have an account!</x-a>
+            </x-slot:actions>
+        </x-card>
+    </x-container>
+</x-layout.app>
