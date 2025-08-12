@@ -3,6 +3,7 @@
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\auth\LogoutController;
 use App\Http\Controllers\auth\RegisterController;
+use App\Http\Controllers\BioLinkController;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LinkController;
@@ -49,3 +50,5 @@ Route::middleware('auth')->group(
         });
     }
 );
+
+Route::get('/{user:handler}', BioLinkController::class)->name('bio-link');
