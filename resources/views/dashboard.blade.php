@@ -7,6 +7,10 @@
         </div>
     @endif
 
+    <a href="{{ route('links.create') }}">Criar novo link</a>
+    <br>
+    <a href="{{ route('profile') }}">Editar perfil</a>
+
     <ul>
         @foreach ($links as $link)
             <li style="display: flex">

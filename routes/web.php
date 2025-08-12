@@ -6,6 +6,7 @@ use App\Http\Controllers\auth\RegisterController;
 use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LinkController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +41,11 @@ Route::middleware('auth')->group(
 
             Route::patch('/links/{link}/up', [LinkController::class, 'up'])->name('links.up');
             Route::patch('/links/{link}/down', [LinkController::class, 'down'])->name('links.down');
+        });
+
+        Route::middleware('auth')->group(function () {
+            Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+            Route::put('/profile', [ProfileController::class, 'update']);
         });
     }
 );
