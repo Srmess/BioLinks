@@ -1,34 +1,17 @@
 <x-layout.app>
     <x-container>
-        <div>
-            <h1>Cadastrar link</h1>
+        <x-card title="Create a new Link">
+            <x-form :route="route('links.create')" post id="create-link-form">
+                <x-input placeholder="Name" name="name" value="{{ old('name') }}" />
+                <x-input placeholder="URL" name="url" value="{{ old('url') }}" />
+            </x-form>
 
-            @if ($message = session()->get('message'))
-                <div>
-                    {{ $message }}
-                </div>
-            @endif
-
-            <form action="{{ route('links.create') }}" method="post">
-                @csrf
-
-                <div>
-                    <label>Nome:</label>
-                    <input type="text" name="name" value="{{ old('name') }}" />
-                    @error('name')
-                        <span>{{ $message }}</span>
-                    @enderror
-                </div>
-                <div>
-                    <label>link:</label>
-                    <input type="text" name="url" value="{{ old('url') }}" />
-                    @error('url')
-                        <span>{{ $message }}</span>
-                    @enderror
-                </div>
-
-                <button>Criar link</button>
-            </form>
-        </div>
+            <x-slot:actions class="flex-row bg-amber-700">
+                <x-button form="create-link-form" type='submit' class="w-full">Create new Link</x-button>
+                <a href="{{ route('dashboard') }}" class="w-full">
+                    <x-button class="w-full btn-ghost hover:bg-conic-240/20">Cancel</x-button>
+                </a>
+            </x-slot:actions>
+        </x-card>
     </x-container>
 </x-layout.app>

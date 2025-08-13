@@ -30,7 +30,14 @@ class StoreLinkRequest extends FormRequest
 
     public function postLink()
     {
-        Auth::user()->links()->create($this->validated());
+        $user = Auth::user();
+
+        $payload = array_merge(
+            $this->validated(),
+            ['index' =>  count($user->links()->get())]
+        );
+
+        $user->links()->create($payload);
 
         return true;
     }
