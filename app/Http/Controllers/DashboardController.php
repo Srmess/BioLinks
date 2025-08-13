@@ -13,6 +13,7 @@ class DashboardController extends Controller
         $links = Auth::user()->links()->orderBy('index')->get();
 
         return view('dashboard', [
+            'user' => Auth::user(),
             'links' => $links
         ]);
     }

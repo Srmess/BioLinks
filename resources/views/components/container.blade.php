@@ -1,1 +1,3 @@
-<div class="h-full flex justify-center items-center">{{ $slot }}</div>
+<div class="h-full max-w-screen-lg mx-auto relative flex justify-center items-center">
+    {{ $slot }}
+</div>
