@@ -5,7 +5,6 @@
 @source '../**/*.js';
 @plugin "daisyui";
 
-html,
-body {
+html {
     height: 100%;
 }

@@ -6,7 +6,7 @@
                 <x-input placeholder="URL" name="url" value="{{ old('url') }}" />
             </x-form>
 
-            <x-slot:actions class="flex-row bg-amber-700">
+            <x-slot:actions>
                 <x-button form="create-link-form" type='submit' class="w-full">Create new Link</x-button>
                 <a href="{{ route('dashboard') }}" class="w-full">
                     <x-button class="w-full btn-ghost hover:bg-conic-240/20">Cancel</x-button>
